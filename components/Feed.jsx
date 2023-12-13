@@ -71,10 +71,6 @@ const PromptCardList = ({ value, data, handleTagClick }) => {
             </div>
           </Card>
         </div>
-      ) : data.length === 0 ? (
-        <div className=" w-full flex items-center justify-center">
-          <NoResultsMessage value={value} />
-        </div>
       ) : (
         <div className="prompt_layout">
           {data.map((post) => (
