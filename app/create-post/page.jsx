@@ -19,7 +19,7 @@ export default function CreatePost() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const res = await fetch("/api/prompt/new", {
+      const res = await fetch(`/api/prompt/new?timestamp=${Date.now()}`, {
         method: "POST",
         body: JSON.stringify({
           post: post.post,
