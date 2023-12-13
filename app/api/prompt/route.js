@@ -8,12 +8,9 @@ export const GET = async (request) => {
 
     const post = await Post.find({}).populate("creator");
 
-    return new NextResponse.json(
-      { message: "Ok", post: post },
-      { status: 200 }
-    );
+    return NextResponse.json({ message: "Ok", post: post }, { status: 200 });
   } catch (error) {
-    return new NextResponse.json(
+    return NextResponse.json(
       { message: "Failed to fetch all post" },
       { status: 500 }
     );
