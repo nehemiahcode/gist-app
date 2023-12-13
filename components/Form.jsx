@@ -10,7 +10,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       </h1>
       <p className="desc text-left max-w-md">
         {type} and share amazing prompts with the world, and let your
-        imagination run wild with any AI-powered platform
+        imagination and thoughts run wild. 
       </p>
 
       <form
@@ -19,7 +19,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       >
         <label>
           <span className="font-satoshi font-semibold text-base text-gray-700">
-            Your AI Prompt
+            Your Prompt
           </span>
 
           <textarea
@@ -27,6 +27,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             onChange={(e) => setPost({ ...post, post: e.target.value })}
             placeholder="Write your post here"
             required
+            maxLength={200}
+            minLength={20}
             className="form_textarea "
           />
         </label>
@@ -44,6 +46,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             type="text"
             placeholder="#Tag"
             required
+            maxLength={20}
+            minLength={2}
             className="form_input"
           />
         </label>

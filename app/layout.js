@@ -21,7 +21,9 @@ export default function RootLayout({ children }) {
           <main className="app">
             <CreateBtn />
             {children}
+          
           </main>
+        
         </Provider>
       </body>
     </html>

@@ -48,6 +48,8 @@ const UpdatePrompt = () => {
 
       if (response.ok) {
         toast.success("post edited");
+        navigator.vibrate([60, 30]);
+        router.push('/')
       }
     } catch (error) {
       console.log(error);

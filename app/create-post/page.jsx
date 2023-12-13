@@ -30,9 +30,10 @@ export default function CreatePost() {
       });
       if (res.ok) {
         toast.success("post created");
+        navigator.vibrate([60, 30]);
         setTimeout(() => {
           router.push("/");
-        }, 4000);
+        }, 3000);
       }
     } catch (error) {
       console.log(error);

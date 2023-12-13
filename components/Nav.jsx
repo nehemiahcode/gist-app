@@ -20,7 +20,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="flex-between w-full bg-white  mb-16 py-4 px-3 sm:px-16">
+    <nav className="flex items-center justify-between w-full bg-white  mb-9 py-3 px-3 sm:px-16">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
           src="/assets/images/logo.svg"
@@ -36,7 +36,13 @@ const Nav = () => {
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Button as={NextLink} href="/create-post" className="black_btn">
+            <Button
+              as={NextLink}
+              scroll={false}
+              prefetch={false}
+              href="/create-post"
+              className="black_btn"
+            >
               Create Post
             </Button>
 
@@ -44,7 +50,7 @@ const Nav = () => {
               Sign Out
             </Button>
 
-            <Link href="/profile">
+            <Link scroll={false} prefetch={false} href="/profile">
               <Image
                 src={session?.user.image}
                 width={37}
@@ -94,6 +100,8 @@ const Nav = () => {
             {toggleDropdown && (
               <div className="dropdown">
                 <Link
+                  scroll={false}
+                  prefetch={false}
                   href="/users"
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
@@ -101,6 +109,8 @@ const Nav = () => {
                   Users
                 </Link>
                 <Link
+                  scroll={false}
+                  prefetch={false}
                   href="/profile"
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
@@ -108,6 +118,8 @@ const Nav = () => {
                   My Profile
                 </Link>
                 <Link
+                  scroll={false}
+                  prefetch={false}
                   href="/create-prompt"
                   className="dropdown_link"
                   onClick={() => setToggleDropdown(false)}
@@ -132,7 +144,7 @@ const Nav = () => {
           <>
             {providers &&
               Object.values(providers).map((provider) => (
-                <button
+                <Button
                   type="button"
                   key={provider.name}
                   onClick={() => {
@@ -141,7 +153,7 @@ const Nav = () => {
                   className="black_btn"
                 >
                   Sign in
-                </button>
+                </Button>
               ))}
           </>
         )}

@@ -25,11 +25,13 @@ export default function CreateBtn() {
           isIconOnly
           size="lg"
           as={NextLink}
+          scroll={false}
+          prefetch={false}
           href="/create-post"
           className={` ${
             (router === "/create-post" && "hidden") ||
             (router === "/" && "flex")
-          } rounded-full  bg-orange-500 z-[990] text-white fixed bottom-14 right-10 `}
+          } rounded-full  bg-orange-500 z-[990] text-white fixed bottom-20 right-10 `}
         >
           <AiOutlinePlus size={23} />
         </Button>
@@ -41,7 +43,7 @@ export default function CreateBtn() {
           className={` ${
             (router === "/create-post" && "hidden") ||
             (router === "/" && "flex")
-          } rounded-full  bg-orange-500 z-[990] text-white fixed bottom-14 right-10 `}
+          } rounded-full  bg-orange-500 z-[990] text-white fixed bottom-20 right-10 `}
         >
           <AiOutlinePlus size={25} />
         </Button>
