@@ -78,7 +78,7 @@ body {
 /* Tailwind Styles */
 
 .app {
-  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-4;
 }
 
 .black_btn {
@@ -141,7 +141,7 @@ body {
 
 /* Nav Component */
 .logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+  @apply  font-satoshi font-semibold text-lg text-black tracking-wide;
 }
 
 .dropdown {

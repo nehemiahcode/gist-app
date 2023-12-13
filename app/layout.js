@@ -14,11 +14,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Provider>
+          <Nav />
           <div className="main">
             <div className=" gradient" />
           </div>
           <main className="app">
-            <Nav />
             <CreateBtn />
             {children}
           </main>

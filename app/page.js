@@ -1,7 +1,7 @@
 import Feed from "@/components/Feed";
 
 const Home = () => (
-  <section className="w-full flex-center flex-col p-0">
+  <section className="w-full font-poppins flex-center flex-col p-0">
     <h1 className="head_text text-center p-0">
       Discover & Share
       <br className="max-md:hidden" />
