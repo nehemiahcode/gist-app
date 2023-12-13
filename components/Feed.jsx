@@ -101,7 +101,7 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch(`/api/prompt?timestamp=${Date.now()}`);
+      const response = await fetch(`/api/prompt`, {cache:"no-cache"});
       const data = await response.json();
 
       setAllPosts(data);
