@@ -9,7 +9,7 @@ const Profile = ({ name, desc, data, userImage, handleEdit, handleDelete }) => {
         className=" h-[100px] w-[100px]"
         alt={`${userImage} profile_picture`}
       />
-      <h1 className="head_text text-left">
+      <h1 className="head_text text-left overflow-hidden w-screen">
         <span className="blue_gradient">{name} Profile</span>
       </h1>
       <p className="desc text-left">{desc}</p>

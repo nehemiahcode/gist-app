@@ -24,9 +24,7 @@ export default function ProfilePage() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch(`/api/users/${session?.user?.id}/posts`, {
-        cache: "no-store",
-      });
+      const response = await fetch(`/api/users/${session?.user?.id}/posts`);
       const data = await response.json();
 
       setPosts(data);
@@ -77,7 +75,7 @@ export default function ProfilePage() {
     setSelectedPost(null);
   };
   if (!session) {
-    redirect("/");
+    redirect('/')
   }
   return (
     <>
