@@ -1,5 +1,6 @@
 import Post from "@/models/prompt";
 import { connectToDB } from "@/utils/database";
+import { NextResponse } from "next/server";
 
 export const GET = async (request) => {
   try {
@@ -7,8 +8,14 @@ export const GET = async (request) => {
 
     const post = await Post.find({}).populate("creator");
 
-    return new Response(JSON.stringify(post), { status: 200 });
+    return new NextResponse.json(
+      { message: "Ok", post: post },
+      { status: 200 }
+    );
   } catch (error) {
-    return new Response("Failed to fetch all post", { status: 500 });
+    return new NextResponse.json(
+      { message: "Failed to fetch all post" },
+      { status: 500 }
+    );
   }
 };
