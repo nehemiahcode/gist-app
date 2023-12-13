@@ -33,7 +33,7 @@ export default function Users() {
             </div>
           </div>
         ) : (
-          <div className="flex ">
+          <div className="flex gap-3 flex-col md:flex-row px-3">
             {users.map((user) => (
               <div
                 className="flex flex-col gap-2 bg-white cursor-pointer py-3 px-10 shadow-lg rounded"

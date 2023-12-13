@@ -31,7 +31,7 @@ export default function CreateBtn() {
           className={` ${
             (router === "/create-post" && "hidden") ||
             (router === "/" && "flex")
-          } rounded-full  bg-orange-500 z-[990] text-white fixed bottom-20 right-10 `}
+          } rounded-full  bg-orange-500 z-[990] text-white fixed bottom-24 right-10 `}
         >
           <AiOutlinePlus size={23} />
         </Button>
@@ -43,7 +43,7 @@ export default function CreateBtn() {
           className={` ${
             (router === "/create-post" && "hidden") ||
             (router === "/" && "flex")
-          } rounded-full  bg-orange-500 z-[990] text-white fixed bottom-20 right-10 `}
+          } rounded-full  bg-orange-500 z-[990] text-white fixed bottom-24 right-10 `}
         >
           <AiOutlinePlus size={25} />
         </Button>
@@ -79,9 +79,11 @@ export function NotUserModal({ isOpen, onOpenChange }) {
                 <span className=" text-7xl">
                   <FaExpeditedssl />
                 </span>
-                <p className=" font-medium">You must signin to create your own prompt</p>
+                <p className=" font-medium">
+                  You must signin to create your own prompt
+                </p>
 
-                {!session?.user && (
+                {session?.user ? null : (
                   <>
                     {providers &&
                       Object.values(providers).map((provider) => (

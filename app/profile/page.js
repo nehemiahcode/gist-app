@@ -58,7 +58,7 @@ export default function ProfilePage() {
 
       setPosts(filteredPosts);
       toast.success("post deleted");
-      navigator.vibrate([60, 30]);
+      navigator.vibrate([60, 0]);
       setLoading(true);
     } catch (error) {
       console.log(error);
