@@ -14,10 +14,10 @@ const NoResultsMessage = ({ value }) => (
   </div>
 );
 
-const PromptCardList = ({ value, data, loading, handleTagClick }) => {
+const PromptCardList = ({ value, data, handleTagClick }) => {
   return (
     <div className="mt-16 ">
-      {loading ? (
+      {data.length === 0 ? (
         <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Card className="w-[360px]  space-y-5 p-4" radius="lg">
             <div className="max-w-[300px] w-full flex items-center gap-3">
@@ -92,7 +92,6 @@ const PromptCardList = ({ value, data, loading, handleTagClick }) => {
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   // Search states
   const [searchText, setSearchText] = useState("");
@@ -101,15 +100,15 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await fetch(`/api/prompt`);
       const data = await response.json();
 
       setAllPosts(data);
-      setLoading(false); // Set loading to false after posts are fetched
+      // Set loading to false after posts are fetched
     } catch (error) {
       console.error("Error fetching posts:", error);
-      setLoading(false); // Set loading to false in case of an error
+      // Set loading to false in case of an error
     }
   };
 
@@ -168,7 +167,7 @@ const Feed = () => {
       <PromptCardList
         value={searchText}
         data={searchText ? searchedResults : allPosts}
-        loading={loading} // Pass loading state to PromptCardList
+        // Pass loading state to PromptCardList
         handleTagClick={handleTagClick}
       />
     </section>
