@@ -98,24 +98,25 @@ const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
-
   const fetchPosts = async () => {
     try {
-      setLoading(true)
-      const response = await fetch(`/api/prompt`);
+      setLoading(true);
+      const response = await fetch("/api/prompt", { cache: "no-store" });
       const data = await response.json();
 
-      setAllPosts(data);
-      setLoading(false); // Set loading to false after posts are fetched
+      // Add timestamps to each post
+      const postsWithTimestamps = data.map((post) => ({
+        ...post,
+        timestamp: Date.now(),
+      }));
+
+      setAllPosts(postsWithTimestamps);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching posts:", error);
-      setLoading(false); // Set loading to false in case of an error
+      setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchPosts();
-  }, []);
 
   const filterPost = (searchtext) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
