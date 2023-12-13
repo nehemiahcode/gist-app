@@ -14,10 +14,10 @@ const NoResultsMessage = ({ value }) => (
   </div>
 );
 
-const PromptCardList = ({ value, data, handleTagClick }) => {
+const PromptCardList = ({ value, data, loading, handleTagClick }) => {
   return (
     <div className="mt-16 ">
-      {data.length === 0 ? (
+      {loading ? (
         <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Card className="w-[360px]  space-y-5 p-4" radius="lg">
             <div className="max-w-[300px] w-full flex items-center gap-3">
@@ -71,6 +71,10 @@ const PromptCardList = ({ value, data, handleTagClick }) => {
             </div>
           </Card>
         </div>
+      ) : data.length === 0 ? (
+        <div className=" w-full flex items-center justify-center">
+          <NoResultsMessage value={value} />
+        </div>
       ) : (
         <div className="prompt_layout">
           {data.map((post) => (
@@ -88,6 +92,7 @@ const PromptCardList = ({ value, data, handleTagClick }) => {
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // Search states
   const [searchText, setSearchText] = useState("");
@@ -96,15 +101,15 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      setLoading(true);
+      setLoading(true)
       const response = await fetch(`/api/prompt`);
       const data = await response.json();
 
       setAllPosts(data);
-      // Set loading to false after posts are fetched
+      setLoading(false); // Set loading to false after posts are fetched
     } catch (error) {
       console.error("Error fetching posts:", error);
-      // Set loading to false in case of an error
+      setLoading(false); // Set loading to false in case of an error
     }
   };
 
@@ -163,7 +168,7 @@ const Feed = () => {
       <PromptCardList
         value={searchText}
         data={searchText ? searchedResults : allPosts}
-        // Pass loading state to PromptCardList
+        loading={loading} // Pass loading state to PromptCardList
         handleTagClick={handleTagClick}
       />
     </section>

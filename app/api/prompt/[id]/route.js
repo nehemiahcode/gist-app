@@ -15,7 +15,7 @@ export const GET = async (request, { params }) => {
 };
 
 export const PATCH = async (request, { params }) => {
-  const { post, tag, } = await request.json();
+  const { post, tag, createdAt } = await request.json();
 
   try {
     await connectToDB();
@@ -30,6 +30,7 @@ export const PATCH = async (request, { params }) => {
     // Update the prompt with new data
     existingPost.post = post;
     existingPost.tag = tag;
+    existingPost.createdAt = createdAt;
 
     await existingPost.save();
 

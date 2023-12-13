@@ -17,7 +17,7 @@ export default function CreatePost() {
   });
   const createPost = async (e) => {
     e.preventDefault();
-    setSubmitting(true);
+
     try {
       const res = await fetch(`/api/prompt/new`, {
         method: "POST",
@@ -30,6 +30,7 @@ export default function CreatePost() {
       });
       if (res.ok) {
         toast.success("post created");
+        setSubmitting(true);
         navigator.vibrate([60, 30]);
         setTimeout(() => {
           router.push("/");

@@ -12,7 +12,11 @@ const UpdatePrompt = () => {
   const promptId = searchParams.get("id");
   const { data: session } = useSession();
 
-  const [post, setPost] = useState({ post: "", tag: "", createdAt: "" });
+  const [post, setPost] = useState({
+    post: "",
+    tag: "",
+    createdAt: new Date().toDateString(),
+  });
   const [submitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -49,7 +53,7 @@ const UpdatePrompt = () => {
       if (response.ok) {
         toast.success("post edited");
         navigator.vibrate([60, 30]);
-        router.push('/')
+        router.push("/");
       }
     } catch (error) {
       console.log(error);
