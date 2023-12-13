@@ -32,7 +32,9 @@ export default function CreatePost() {
         toast.success("post created");
         setSubmitting(true);
         navigator.vibrate([60, 30]);
-        router.push("/");
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
       }
     } catch (error) {
       console.log(error);

@@ -53,7 +53,9 @@ const UpdatePrompt = () => {
       if (response.ok) {
         toast.success("post edited");
         navigator.vibrate([60, 30]);
-        router.push("/");
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
       }
     } catch (error) {
       console.log(error);
