@@ -17,19 +17,8 @@ export default function CreatePost() {
   });
   const createPost = async (e) => {
     e.preventDefault();
-    setSubmitting(true);
+  setSubmitting(true);
     try {
-      const newPost = {
-        post: post.post,
-        userId: session.user.id,
-        tag: post.tag,
-        createdAt: post.createdAt,
-        id: Math.random().toString(36).substring(2, 15), // Generate temporary ID
-        pending: true,
-      };
-
-      // Add the temporary post to allPosts state immediately
-      setAllPosts((previousPosts) => [...previousPosts, newPost]);
       const res = await fetch(`/api/prompt/new`, {
         method: "POST",
         body: JSON.stringify({
@@ -37,23 +26,16 @@ export default function CreatePost() {
           userId: session.user.id,
           tag: post.tag,
           createdAt: post.createdAt,
+          
         }),
       });
       if (res.ok) {
-        const actualPost = await res.json();
-        setAllPosts((previousPosts) =>
-          previousPosts.map((post) =>
-            post.id === newPost.id ? actualPost : post
-          )
-        );
         toast.success("post created");
+      
         navigator.vibrate([60, 30]);
-      } else {
-        // Remove temporary post if creation fails
-        setAllPosts((previousPosts) =>
-          previousPosts.filter((post) => post.id !== newPost.id)
-        );
-        toast.error("Opps something went wrong!");
+        setTimeout(() => {
+          router.push("/");
+        }, 4000);
       }
     } catch (error) {
       console.log(error);
