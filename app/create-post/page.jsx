@@ -26,7 +26,6 @@ export default function CreatePost() {
           userId: session.user.id,
           tag: post.tag,
           createdAt: post.createdAt,
-          
         }),
       });
       if (res.ok) {
