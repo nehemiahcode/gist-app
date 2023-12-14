@@ -157,8 +157,11 @@ const Nav = () => {
       </nav>
       {toggleDropdown && (
         <div
-          onClick={() => setToggleDropdown(false)}
-          className="fixed h-screen w-full bottom-0 top-0 inset-0"
+          onClick={() => {
+            setToggleDropdown(false);
+            console.log("clicked me");
+          }}
+          className="fixed h-screen w-full z-30 bg-[rgba(0,0,0,0.2)] bottom-0  top-0 "
         ></div>
       )}
     </>

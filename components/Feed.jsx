@@ -18,9 +18,9 @@ const PromptCardList = ({ value, data, loading, handleTagClick }) => {
   return (
     <div className="mt-16 ">
       {loading ? (
-        <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Card className="w-[360px]  space-y-5 p-4" radius="lg">
-            <div className="max-w-[300px] w-full flex items-center gap-3">
+        <div className="flex flex-col md:flex-row w-full  gap-4">
+          <Card className="md:w-[360px] w-full  space-y-5 p-4" radius="lg">
+            <div className="min-w-[300px] w-full flex items-center gap-3">
               <div>
                 <Skeleton className="flex rounded-full w-12 h-12" />
               </div>
@@ -36,8 +36,8 @@ const PromptCardList = ({ value, data, loading, handleTagClick }) => {
               <Skeleton className="w-full h-3 rounded-lg" />
             </div>
           </Card>
-          <Card className="w-[360px]  space-y-5 p-4" radius="lg">
-            <div className="max-w-[300px] w-full flex items-center gap-3">
+          <Card className="md:w-[360px] w-full  space-y-5 p-4" radius="lg">
+            <div className="min-w-[300px] w-full flex items-center gap-3">
               <div>
                 <Skeleton className="flex rounded-full w-12 h-12" />
               </div>
@@ -53,8 +53,8 @@ const PromptCardList = ({ value, data, loading, handleTagClick }) => {
               <Skeleton className="w-full h-3 rounded-lg" />
             </div>
           </Card>
-          <Card className="w-[360px]  space-y-5 p-4" radius="lg">
-            <div className="max-w-[300px] w-full flex items-center gap-3">
+          <Card className="md:w-[360px]  w-full space-y-5 p-4" radius="lg">
+            <div className="min-w-[300px] w-full flex items-center gap-3">
               <div>
                 <Skeleton className="flex rounded-full w-12 h-12" />
               </div>
@@ -92,7 +92,7 @@ const PromptCardList = ({ value, data, loading, handleTagClick }) => {
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Search states
   const [searchText, setSearchText] = useState("");

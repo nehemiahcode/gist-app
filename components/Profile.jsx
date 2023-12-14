@@ -1,12 +1,21 @@
 import PromptCard from "./PromptCard";
 import { Avatar, Skeleton, Card } from "@nextui-org/react";
-const Profile = ({ name, desc, data, userImage, handleEdit, handleDelete }) => {
+
+const Profile = ({
+  name,
+  desc,
+  data,
+  hidden,
+  userImage,
+  handleEdit,
+  handleDelete,
+}) => {
   return (
     <section className="w-full">
       <Avatar
         size="lg"
         src={userImage}
-        className=" h-[100px] w-[100px]"
+        className={`${hidden} h-[100px] w-[100px]`}
         alt={`${userImage} profile_picture`}
       />
       <h1 className="head_text text-left overflow-hidden w-screen">
@@ -51,6 +60,7 @@ const Profile = ({ name, desc, data, userImage, handleEdit, handleDelete }) => {
                 <Skeleton className="w-full h-3 rounded-lg" />
               </div>
             </Card>
+
             <Card className="md:w-[360px] w-full space-y-5 p-4" radius="lg">
               <div className="max-w-[300px] w-full flex items-center gap-3">
                 <div>

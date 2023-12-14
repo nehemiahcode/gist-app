@@ -79,7 +79,7 @@ export function NotUserModal({ isOpen, onOpenChange }) {
                 <span className=" text-7xl">
                   <FaExpeditedssl />
                 </span>
-                <p className=" font-medium">
+                <p className="text-center">
                   You must signin to create your own prompt
                 </p>
 
