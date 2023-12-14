@@ -98,7 +98,7 @@ const Feed = () => {
   const fetchPosts = async () => {
     try {
       // setLoading(true);
-      const response = await fetch("/api/prompt", { cache: "no-store" });
+      const response = await fetch("/api/prompt", {next: { revalidate: 10, cache: "no-store" }});
       const data = await response.json();
 
       setAllPosts(data);
