@@ -5,19 +5,19 @@ import { Skeleton, Card } from "@nextui-org/react";
 import PromptCard from "./PromptCard";
 import { MdSearch } from "react-icons/md";
 
-const NoResultsMessage = ({ value }) => (
-  <div
-    className=" w-[90%] md:max-w-lg shadow-xl overflow-x-auto scrollbar-hide px-2  bg-white p-4 text-center"
-    radius="lg"
-  >
-    No results for <strong className="text-red-500">{value}</strong>
-  </div>
-);
+// const NoResultsMessage = ({ value }) => (
+//   <div
+//     className=" w-[90%] md:max-w-lg shadow-xl overflow-x-auto scrollbar-hide px-2  bg-white p-4 text-center"
+//     radius="lg"
+//   >
+//     No results for <strong className="text-red-500">{value}</strong>
+//   </div>
+// );
 
-const PromptCardList = ({ value, data, loading, handleTagClick }) => {
+const PromptCardList = ({ data, loading, handleTagClick }) => {
   return (
     <div className="mt-16 ">
-      {loading ? (
+      {data.length === 0 ? (
         <div className="flex flex-col md:flex-row w-full  gap-4">
           <Card className="md:w-[360px] w-full  space-y-5 p-4" radius="lg">
             <div className="min-w-[300px] w-full flex items-center gap-3">
@@ -71,10 +71,6 @@ const PromptCardList = ({ value, data, loading, handleTagClick }) => {
             </div>
           </Card>
         </div>
-      ) : data.length === 0 ? (
-        <div className=" w-full flex items-center justify-center">
-          <NoResultsMessage value={value} />
-        </div>
       ) : (
         <div className="prompt_layout">
           {data.map((post) => (
@@ -92,7 +88,7 @@ const PromptCardList = ({ value, data, loading, handleTagClick }) => {
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
   // Search states
   const [searchText, setSearchText] = useState("");
@@ -101,15 +97,15 @@ const Feed = () => {
 
   const fetchPosts = async () => {
     try {
-      setLoading(true);
+      // setLoading(true);
       const response = await fetch("/api/prompt", { cache: "no-store" });
       const data = await response.json();
 
       setAllPosts(data);
-      setLoading(false); // Set loading to false after posts are fetched
+      // setLoading(false); // Set loading to false after posts are fetched
     } catch (error) {
       console.error("Error fetching posts:", error);
-      setLoading(false); // Set loading to false in case of an error
+      // setLoading(false); // Set loading to false in case of an error
     }
   };
 
@@ -165,12 +161,14 @@ const Feed = () => {
       </form>
 
       {/* All Prompts */}
-      <PromptCardList
-        value={searchText}
-        data={searchText ? searchedResults : allPosts}
-        loading={loading} // Pass loading state to PromptCardList
-        handleTagClick={handleTagClick}
-      />
+      {searchText ? (
+        <PromptCardList
+          data={searchedResults}
+          handleTagClick={handleTagClick}
+        />
+      ) : (
+        <PromptCardList data={allPosts} handleTagClick={handleTagClick} />
+      )}
     </section>
   );
 };
